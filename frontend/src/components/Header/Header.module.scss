@@ -1,0 +1,45 @@
+@import "../../assets/sass/utils/variables.scss";
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: #fff;
+  padding-bottom: 10px;
+  position: relative;
+
+  .notifications {
+    position: relative;
+    margin-right: 2px;
+    &Icon {
+      padding: 5px 6px;
+      border-radius: 50%;
+      cursor: pointer;
+      &:hover {
+        transition: all ease 0.2s;
+        background-color: #939db834;
+      }
+    }
+  }
+  &_details {
+    border-radius: 5px;
+    font-size: 1.2rem;
+    display: flex;
+    padding: 6px 10px;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+  }
+  &_pp {
+    .letters {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgb(73, 153, 7);
+      color: #fff;
+      display: grid;
+      font-size: 1.1rem;
+      place-items: center;
+      font-weight: 600;
+    }
+  }
+}
