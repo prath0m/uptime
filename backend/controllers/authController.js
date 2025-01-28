@@ -17,6 +17,7 @@ const jwtRefreshSecret = process.env.JWT_REFRESH_SECRET;
 //@access Public
 const register = asyncHandler(async (req, res) => {
   const { email, password, firstName, lastName } = req.body;
+  console.log(email, password, firstName, lastName);
 
   //Input validations
   if (!email || !password) {

@@ -12,7 +12,7 @@ const Register = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [singUpDetails, setSignUpDetails] = useState({
+  const [signUpDetails, setSignUpDetails] = useState({
     email: "chathurapereraaa@gmail.com",
     password: "chathura123456",
     confirmedPassword: "chathura123456",
@@ -52,10 +52,10 @@ const Register = () => {
   //handle form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (singUpDetails.password !== singUpDetails.confirmedPassword) {
+    if (signUpDetails.password !== signUpDetails.confirmedPassword) {
       return toast.error("Passwords do not match!");
     }
-    const { confirmedPassword, ...userData } = singUpDetails;
+    const { confirmedPassword, ...userData } = signUpDetails;
 
     await dispatch(registerUser(userData));
     isSuccess && navigate("/email-verification");
@@ -77,7 +77,7 @@ const Register = () => {
                   name="firstName"
                   required
                   placeholder="john"
-                  value={singUpDetails.firstName}
+                  value={signUpDetails.firstName}
                 />
               </div>
               <div className={styles.inputControl}>
@@ -87,7 +87,7 @@ const Register = () => {
                   onChange={handleChange}
                   name="lastName"
                   required
-                  value={singUpDetails.lastName}
+                  value={signUpDetails.lastName}
                   placeholder="doe"
                 />
               </div>
@@ -99,7 +99,7 @@ const Register = () => {
                 type="text"
                 required
                 name="email"
-                value={singUpDetails.email}
+                value={signUpDetails.email}
                 onChange={handleChange}
                 placeholder="name@gmail.com"
               />
@@ -110,7 +110,7 @@ const Register = () => {
                 onChange={handleChange}
                 autoComplete="off"
                 type={showPassword ? "text" : "password"}
-                value={singUpDetails.password}
+                value={signUpDetails.password}
                 required
                 placeholder="password"
                 name="password"
@@ -132,7 +132,7 @@ const Register = () => {
                 onChange={handleChange}
                 type={showConfirmedPassword ? "text" : "password"}
                 required
-                value={singUpDetails.confirmedPassword}
+                value={signUpDetails.confirmedPassword}
                 placeholder="password"
                 name="confirmedPassword"
               />
