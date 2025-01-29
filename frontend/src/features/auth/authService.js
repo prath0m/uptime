@@ -1,10 +1,9 @@
 import axios from "@/api/axios";
-const API_URL = import.meta.BASE_URL;
 import {getbaseURL} from '../../util/getBaseUrl';
 
 //Register user
 const register = async (userData) => {
-  const response = await axios.post(getbaseURL()+'/api/v1/register', userData);
+  const response = await axios.post(getbaseURL()+'/register', userData);
 
   if (response.data) {
     localStorage.setItem("user", JSON.stringify(response.data));
@@ -14,7 +13,7 @@ const register = async (userData) => {
 
 //Login user
 const login = async (userData) => {
-  const response = await axios.post("/login", userData, {
+  const response = await axios.post(getbaseURL()+"/login", userData, {
     withCredentials: true,
   });
 
@@ -29,12 +28,12 @@ const login = async (userData) => {
 //Logout user
 const logout = async () => {
   localStorage.removeItem("user");
-  await axios.post("/logout");
+  await axios.post(getbaseURL()+"/logout");
 };
 
 //Refresh 
 const refresh = async () => {
-  await axios.get("/refresh");
+  await axios.get(getbaseURL()+"/refresh");
 };
 
 const authService = {
