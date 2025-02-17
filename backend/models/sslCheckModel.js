@@ -22,7 +22,6 @@ const SSLCheckSchema = new Schema({
     notifyExpiration: {
         type: String
     }
-
 })
 
 const SSLCheck = mongoose.model("SSLCheck", SSLCheckSchema);

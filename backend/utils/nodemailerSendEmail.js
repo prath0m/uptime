@@ -4,7 +4,6 @@ const fs = require('fs');
 const handlebars = require('handlebars');
 require("dotenv").config();
 
-
 const sendEmail = async () => {
     console.log('process.env.GMAIL_PASSWORD',process.env.GMAIL_PASSWORD);
     try {

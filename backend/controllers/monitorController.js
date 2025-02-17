@@ -74,7 +74,7 @@ const addMonitor = asyncHandler(async (req, res) => {
       (monitor) => monitor.alertsTriggeredOn === alertsTriggeredOn
     )
   ) {
-    return res.status(409).json({ message: "Duplicate url" });
+    return res.status(409).json({ message: "Monitor already present" });
   }
 
   //Creates the new monitor
@@ -85,9 +85,7 @@ const addMonitor = asyncHandler(async (req, res) => {
 
   //If the monitor is for monitoring the SSL expiration
   if (alertsTriggeredOn === "3") {
-
     const secDetails = await checkSSLDetails(url, notifyExpiration, createdMonitor._id, user);
-
   }
 
   res.status(201).json({ message: "Monitor created successfully" });

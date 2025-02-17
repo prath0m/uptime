@@ -47,7 +47,7 @@
 
 - [x] Create Monitors
     - [x] To test availability
-    - [ ] SSL expiration
+    - [x] SSL expiration
     - [ ] Keyword availability
     - [ ] Perfomance monitoring
     - [ ] Core web vital reports
