@@ -39,7 +39,7 @@ const InviteMembers = () => {
   return (
     <div className={styles.wrapper}>
       <BackButton />
-      <h1>Invite Members</h1>
+      <h1>Invite Members (Coming Soon)</h1>
       <form onSubmit={handleSubmit}>
         <section className="sectionWrapper">
           <div className="description">

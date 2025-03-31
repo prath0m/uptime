@@ -6,19 +6,20 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { reset, registerUser } from "@/features/auth/authSlice";
 import { toast } from "react-toastify";
-import bannerImage from "@/assets/images/homepageImage.png";
+import bannerImage from "@/assets/images/homepage.png";
 
 const Register = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [signUpDetails, setSignUpDetails] = useState({
-    email: "chathurapereraaa@gmail.com",
-    password: "chathura123456",
-    confirmedPassword: "chathura123456",
-    firstName: "chathuraaa",
-    lastName: "perera",
+    email: "",
+    password: "",
+    confirmedPassword: "",
+    firstName: "",
+    lastName: "",
   });
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmedPassword, setShowConfirmedPassword] = useState(false);
 
@@ -30,11 +31,9 @@ const Register = () => {
     if (isError) {
       toast.error(message);
     }
-
     if (isSuccess || user) {
       navigate("/");
     }
-
     dispatch(reset());
   }, [user, isError, isSuccess, message, navigate, dispatch]);
 
@@ -150,13 +149,6 @@ const Register = () => {
               </div>
             </div>
 
-            <label
-              htmlFor="agreementCheckbox"
-              className={styles.agreementCheckbox}
-            >
-              <input type="checkbox" name="" id="agreementCheckbox" />I agree
-              with <b>Terms and Privacy</b>
-            </label>
             <button className={styles.loginButton}>
               {isLoading ? <Spinner /> : "Sign up"}
             </button>

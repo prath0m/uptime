@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import SharedLayout from "@/components/SharedLayout";
 import CreateMonitor from "@/pages/create-monitor";
 import Monitors from "@/pages/monitors";
-import Login from "@/pages/login";
+import Login from "@/pages/Login";
 import Register from "@/pages/register";
 import MonitorDetails from "@/pages/monitor-details";
 import EmailConfirmation from "@/pages/email-confirmation";

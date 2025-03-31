@@ -14,8 +14,8 @@ import {
 const Sidebar = () => {
   return (
     <aside className={styles.aside}>
-      <div className={styles.aside_logo}>
-        <img src={logo} alt="logo" />
+      <div style={{padding: '10px'}}>
+        <h1 style={{fontSize: '22px', color: 'white'}}>UpGaurd</h1>
       </div>
       <div>
         <SidebarLink to="/" text="Monitors">

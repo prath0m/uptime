@@ -57,7 +57,7 @@ const Invitations = () => {
 
   return (
     <div className={styles.invitations}>
-      <h2 className={styles.title}>Invitations</h2>
+      <h2 className={styles.title}>Invitations (Coming Soon)</h2>
       <div className={styles.invitations__table}>
         <table>
           <thead>

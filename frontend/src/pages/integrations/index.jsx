@@ -6,7 +6,7 @@ import slackIcon from "@/assets/images/slack.png";
 const Integrations = () => {
   return (
     <div className={styles.integrations}>
-      <PageHeader title="Integrations" buttonText="" />
+      <PageHeader title="Integrations (Coming Soon)" buttonText="" />
       <div className={styles.integrations__wrapper}>
         <div className={styles.integrations__card}>
           <div className={styles.content}>

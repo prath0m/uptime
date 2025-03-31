@@ -31,7 +31,7 @@ const PORT = process.env.PORT || 5000;
 
 //Cors Configurations
 app.use(cors({
-  origin: ["http://127.0.0.1:5173", "http://localhost:5173", "https://uptimesaga.cyclic.app"],
+  origin: ["http://127.0.0.1:5173", "http://localhost:5173"],
   credentials: true
 }));
 app.use(cookieParser());
@@ -44,19 +44,6 @@ app.use("/api/v1/check", checkRoutes);
 app.use("/api/v1/member", memberRoutes);
 app.use("/api/v1/notification", notificationRoutes);
 app.use("/api/v1/invitation", invitationRoutes);
-
-console.log('process.env.NODE_ENV',process.env.NODE_ENV);
-//SERVE STATIC ASSETS IF IN PRODUCTION
-if (process.env.NODE_ENV === "production") {
-  //SET STATIC FOLDER
-  app.use(express.static("../frontend/dist"));
-  console.log('runs in prod')
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "../frontend/dist/index.html"));
-  });
-}
-
-
 
 //CONNECTING TO THE DATABASE
 mongoose.connection.once("open", async () => {

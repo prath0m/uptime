@@ -5,7 +5,6 @@ const Token = require("../models/tokenModel");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const asyncHandler = require("express-async-handler");
-const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
 const generateTokens = require("../utils/generateTokens");
 
@@ -57,14 +56,6 @@ const register = asyncHandler(async (req, res) => {
     token: verificationLinkToken,
   }).save();
 
-  const verificationURL = `${process.env.BASE_URL}/user/verify/${userDetails._id}/${verificationLinkToken}`;
-
-  //Sending email verification email
-  sendEmail(
-    email,
-    { verificationURL },
-    process.env.SENDGRID_EMAIL_VERIFICATION_TEMPLATE
-  );
 
   //Generating the token
   const token = jwt.sign(
