@@ -64,10 +64,6 @@ const addMonitor = asyncHandler(async (req, res) => {
   //Looking for a duplicate url
   const existingMonitor = await Monitor.find({ url, user });
 
-  /*
-   Checks if a monitor with the same URL is 
-   already created for the same purpose
-  */
   if (
     existingMonitor.length > 0 &&
     existingMonitor.some(
@@ -77,13 +73,10 @@ const addMonitor = asyncHandler(async (req, res) => {
     return res.status(409).json({ message: "Monitor already present" });
   }
 
-  //Creates the new monitor
   const createdMonitor = await Monitor.create(req.body);
 
-  //If the monitor is for monitoring the site availability
   if (createdMonitor.alertsTriggeredOn === "1") await testUrl(createdMonitor);
 
-  //If the monitor is for monitoring the SSL expiration
   if (alertsTriggeredOn === "3") {
     const secDetails = await checkSSLDetails(url, notifyExpiration, createdMonitor._id, user);
   }

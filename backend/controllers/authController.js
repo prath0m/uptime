@@ -56,7 +56,6 @@ const register = asyncHandler(async (req, res) => {
     token: verificationLinkToken,
   }).save();
 
-
   //Generating the token
   const token = jwt.sign(
     {
