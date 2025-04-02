@@ -17,10 +17,10 @@ const memberRoutes = require("./routes/memberRoutes");
 const notificationRoutes = require("./routes/notificationRoutes");
 const invitationRoutes = require("./routes/invitationRoutes");
 
-//import the cron job for ssl check
+//import the cron jobs
 require('./services/sslCheck');
-
 require('./services/availabilityCheck');
+require('./services/domainNameCheck');
 
 //Middleware
 app.use(express.json());

@@ -6,38 +6,33 @@ const sendAlerts = require('../utils/alert');
 
 const testUrl = async (monitor) => {
   await axios.get(monitor.url).catch(async (error) => {
-    //Checks if an incident is already created
     const existingIncident = await Incident.findOne({ monitorId: monitor._id });
 
-    //Creates an incident
-    if (!existingIncident) {
-      await createAnIncident(monitor._id, monitor.user, error.response.status);
-      const currentDate = new Date().toJSON().slice(0, 10);
-
-      const user = await User.findById(monitor.user);
-
-      const data = {
+    const currentDate = new Date().toJSON().slice(0, 10);
+    const user = await User.findById(monitor.user);
+    const data = {
         monitorID : monitor._id,
         monitorURL : monitor?.url,
         statusCode : error.response.status,
         createdAt: currentDate,
         firstName : user.firstName
-      };
+    };
 
+    if (!existingIncident) {
+      await Incident.create({
+        monitor: monitor._id,
+        user: monitor.user,
+        cause: `Service Down Status ${error.response.status}`,
+      });
+      await Monitor.updateOne({ _id: monitor._id }, { availability: false, lastIncidentAt: Date.now() });
       sendAlerts(user.email, data);
+      console.log(`Issued service down warning for monitor ${monitor._id}`);
+    }
+    else if(!existingIncident.resolved){
+      sendAlerts(user.email, data);
+      console.log(`Issued service down warning for monitor ${monitor._id}`);
     }
   });
-};
-
-//Creates an incident
-const createAnIncident = async (monitorId, userId, statusCode) => {
-  await Incident.create({
-    monitor: monitorId,
-    user: userId,
-    cause: `Status ${statusCode}`,
-  });
-
-  await Monitor.updateOne({ _id: monitorId }, { availability: false, lastIncidentAt: Date.now() });
 };
 
 module.exports = testUrl;

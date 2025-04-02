@@ -81,14 +81,15 @@ const CreateMonitor = () => {
                 </div>
                 <div className="two-col">
                   <div className="selectWrapper">
-                    <label>Notify me when</label>
+                    <label>Get Notified for</label>
                     <select onChange={handleChange} name="alertsTriggeredOn">
-                      <option value="1">Becomes Unavailable</option>
+                      <option value="1">Service Down</option>
                       {/* <option value="2">Doesn't contain a keyword</option> */}
-                      <option value="3">SSL Expiration</option>
+                      <option value="3">SSL Certificate Expiry</option>
+                      <option value="4">Domain Name Expiry</option>
                     </select>
                   </div>
-                  {monitorDetails.alertsTriggeredOn === "3" && (
+                  {(monitorDetails.alertsTriggeredOn === "3" || monitorDetails.alertsTriggeredOn === "4") && (
                     <div className="selectWrapper">
                       <label>Notify me when</label>
                       <select onChange={handleChange} name="notifyExpiration">

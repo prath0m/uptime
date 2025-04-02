@@ -6,6 +6,21 @@
     font-size: 3rem;
     margin-bottom: 10px;
   }
+  .menuItem {
+    // margin: 3px;
+    cursor: pointer;
+    background-color: $secondary-blue;
+    padding: 5px 10px;
+    color: #fff;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 1.3rem;
+    &:hover {
+      background-color: #3b4254;
+    }
+  }
 
   &__table {
     width: 100%;

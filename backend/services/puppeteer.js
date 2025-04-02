@@ -44,17 +44,9 @@ const checkSSLDetails = async (url, notifyExpiration, monitorId, userId) => {
         sslData.validTo = new Date(sslData.validTo);
 
         const millisecondsPerDay = 24 * 60 * 60 * 1000;
-        const today = Date.now();
+        const today = new Date();
         const differenceInMilliseconds = sslData.validTo - today;
         const differenceInDays = Math.floor(differenceInMilliseconds / millisecondsPerDay);
-
-        if (differenceInDays <= parseInt(notifyExpiration)) {
-            await Incident.create({
-                monitor: monitorId,
-                user: userId,
-                cause: `SSL certificate expires in ${differenceInDays} days`,
-            });
-        }
 
         await SSLCheck.create({
             ...sslData,
@@ -62,15 +54,22 @@ const checkSSLDetails = async (url, notifyExpiration, monitorId, userId) => {
             notifyExpiration: notifyExpiration,
         });
 
-        const user = await User.findById(userId);
-        const data = {
-            firstName : user.firstName,
-            monitorID : monitorId,
-            monitorURL : url,
-            expiryDays : differenceInDays
-        }
+        if (differenceInDays <= parseInt(notifyExpiration)) {
+            await Incident.create({
+                monitor: monitorId,
+                user: userId,
+                cause: `SSL certificate expires in ${differenceInDays} days`,
+            });
 
-        sslAlerts(user.email, data); //send alerts in email
+            const user = await User.findById(userId);
+            const data = {
+                firstName : user.firstName,
+                monitorID : monitorId,
+                monitorURL : url,
+                expiryDays : differenceInDays
+            }
+            sslAlerts(user.email, data); //send alerts in email
+        }
         return Promise.resolve();
     } 
     catch(error){
