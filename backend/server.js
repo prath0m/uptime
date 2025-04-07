@@ -30,7 +30,10 @@ app.use(express.urlencoded({ extended: false }));
 const PORT = process.env.PORT || 5000;
 
 //Cors Configurations
-app.use(cors());
+app.use(cors({
+  origin: ["http://localhost:5173", "https://upguard.onrender.com"],
+  credentials: true,
+}));
 app.use(cookieParser());
 
 // Routes
