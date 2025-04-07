@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chathurperera/uptime-monitor.git"
+    "url": "git+https://github.com/prath0m/uptime.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/chathurperera/uptime-monitor/issues"
+    "url": "https://github.com/prath0m/uptime/issues"
   },
-  "homepage": "https://github.com/chathurperera/uptime-monitor#readme",
+  "homepage": "https://github.com/prath0m/uptime#readme",
   "dependencies": {
     "@sendgrid/mail": "^7.7.0",
     "axios": "^1.7.9",

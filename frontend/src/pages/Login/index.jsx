@@ -14,8 +14,8 @@ const Login = () => {
 
   const [showPassword, setShowPassword] = useState(false);
   const [loginDetails, setLoginDetails] = useState({
-    email: "devanshulanjudkar9@gmail.com",
-    password: "12345678"
+    email: "",
+    password: ""
   });
 
  const { isLoading, isError, isSuccess, message } = useSelector(
