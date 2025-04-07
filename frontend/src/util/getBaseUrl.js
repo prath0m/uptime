@@ -1,3 +1,3 @@
 export function getbaseURL(){
-    return 'http://localhost:5000/api/v1';
+    return 'https://upguard-backend.onrender.com';
 }
