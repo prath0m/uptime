@@ -1,4 +1,4 @@
-=== Features of the Project ===
+# Features of the Project
 
 Fully Implemented :
 1. URL uptime monitoring :
@@ -11,13 +11,13 @@ Fully Implemented :
 - [x] Emails are not sent if the incident is marked resolved
 
 Coming Soon Features :
-- [] Form teams on the platform by sending invites to users
-- [] The whole team is notified for our monitor if an incident occurs
-- [] Slack integration for notifications to team
-- [] Manage teams by adding or removing members
+- Form teams on the platform by sending invites to users
+- The whole team is notified for our monitor if an incident occurs
+- Slack integration for notifications to team
+- Manage teams by adding or removing members
 
 
-=== Step by Step Guide for Installing and running the project ===
+# Step by Step Guide for Installing and running the project
 
 Adding the .env file :
 1. To start the backend, you need to create a .env file first
@@ -41,6 +41,8 @@ Installing the dependencies for frontend (not to be done when using docker setup
 Commands to run Frontend :
 > cd frotnend
 > npm run dev
+
+Note : Before running the frontend, go to frontend/src/util and update the getBaseURL() function. Add this url http://localhost:5000 (do this if you want to test it locally on your device)
 
 Commands to run Backend :
 > cd backend
