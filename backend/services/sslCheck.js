@@ -45,8 +45,8 @@ const scheduledSSLExpiryCheck = asyncHandler(async () => {
     }
 });
 
-//Run every day at midnight
-cron.schedule("0 0 * * *", () => {
+//Run after every 3 hours
+cron.schedule("0 */3 * * *", () => {
     scheduledSSLExpiryCheck().catch((error) => {
         console.error("Error in SSL expiry check:", error);
     });
