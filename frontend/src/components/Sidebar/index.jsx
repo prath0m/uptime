@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./Sidebar.module.scss";
 import SidebarLink from "@/components/Sidebar/SidebarLink";
-import logo from "@/assets/images/logo.png";
 import {
   AiOutlineSecurityScan,
   AiOutlineWarning,
