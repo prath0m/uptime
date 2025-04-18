@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import styles from "./Monitor.module.scss";
 import { AiOutlineEllipsis, AiOutlineBell } from "react-icons/ai";
 import MonitorActionsMenu from "@/pages/monitors/components/MonitorActionsMenu";
-import useOutSideClick from "@/hooks/user-outSideClick";
 import { getTimePeriod } from "../../../../util/getTimePeriod";
-import moment from "moment";
 
 const Monitor = ({ monitor }) => {
   const [showActions, setShowActions] = useState(false);
@@ -49,7 +47,7 @@ const Monitor = ({ monitor }) => {
               ? "URL Monitoring"
               : monitor.alertsTriggeredOn === 3
               ? "SSL Monitoring"
-              : "Keyword Monitoring"}
+              : "Domain Name Monitoring"}
           </p>
         </div>
         <div

@@ -12,8 +12,10 @@ import {
 import { deleteMonitor } from "@/features/monitors/monitorSlice";
 import Spinner from "@/components/Spinner";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const MonitorActionsMenu = ({ monitorId, setShowActions }) => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -31,16 +33,14 @@ const MonitorActionsMenu = ({ monitorId, setShowActions }) => {
       });
   };
 
+  const navigateToIncident = () =>{
+    navigate('/team/incidents');
+  }
+
   return (
     <div className={styles.monitorActionsMenu}>
-      <div className={styles.menuItem}>
-        <AiOutlineSetting /> Settings
-      </div>
-      <div className={styles.menuItem}>
+      <div className={styles.menuItem} onClick={navigateToIncident}>
         <AiOutlineWarning /> Incident
-      </div>
-      <div className={styles.menuItem}>
-        <AiOutlinePauseCircle /> Pause
       </div>
       <div className={styles.menuItem} onClick={() => handleDelete(monitorId)}>
         {!isLoading ? <AiOutlineDelete /> : <Spinner />} Remove

@@ -33,7 +33,7 @@ const Members = () => {
   return (
     <div className={styles.members}>
       <PageHeader
-        title="Team Members"
+        title="Team Members  (Coming Soon)"
         navigateTo="/team/members/add"
         buttonText="Invite Members"
       />

@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { reset, loginUser } from "@/features/auth/authSlice";
 import { toast } from "react-toastify";
-import bannerImage from "@/assets/images/homepageImage.png";
+import bannerImage from "@/assets/images/homepage.png";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 const Login = () => {
@@ -14,14 +14,9 @@ const Login = () => {
 
   const [showPassword, setShowPassword] = useState(false);
   const [loginDetails, setLoginDetails] = useState({
-    email: "john@gmail.com",
-    password: "john123456",
+    email: "",
+    password: ""
   });
-
-  /*
-    chathurapereraaa@gmail.com
-    chathura123456
-  */
 
  const { isLoading, isError, isSuccess, message } = useSelector(
    (state) => state.auth
@@ -98,10 +93,6 @@ const Login = () => {
                 )}
               </div>
             </div>
-            <label htmlFor="rememberLogin" className={styles.rememberLogin}>
-              <input type="checkbox" name="" id="rememberLogin" />
-              Remember information
-            </label>
             <button
               type="submit"
               disabled={isLoading}
@@ -110,7 +101,7 @@ const Login = () => {
               {isLoading ? <Spinner /> : "Login"}
             </button>
             <p className={styles.redirect}>
-              New to Uptime Saga ? <Link to="/register">Sign up</Link>{" "}
+              New to UpGaurd ? <Link to="/register">Sign up</Link>{" "}
             </p>
           </form>
         </div>

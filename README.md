@@ -1,69 +1,54 @@
-<a name="readme-top"></a>
-<br />
-<p align="center">
-  <a href="https://bugvilla.herokuapp.com">
-    <img src="https://github.com/chathurperera/uptime-monitor/blob/main/frontend/src/assets/images/logo.png" alt="Project Logo" width="200" height="50">
-  </a>
-  <h3 align="center">✨Website monitoring application</h3>
-  <p align="center">
-  </p>
-</p>
+# Features of the Project
 
-![](https://mern-ecom.s3.ap-south-1.amazonaws.com/Vite+%2B+React.gif)
+Fully Implemented :
+1. URL uptime monitoring :
+- [x] Add an url of a deployed website and track for service unavailable error (503)
+- [x] Add an url of a deployed website with 'https' (SSL certificate) and track its SSL certificate expiry
+- [x] Add an url of a deployed webiste having issued a domain name and track its domain name expiry (not available for website urls with sub-domain names for example : https://demo-website.onrender.com)
+- [x] Scheduled checks for all three monitors after every 3 hours
+- [x] Incident added for the respective monitors
+- [x] Email notifications for every scheduled check (even if the incident is acknowledged)
+- [x] Emails are not sent if the incident is marked resolved
 
-<p align="center">Website monitoring application built with MERN stack that keeps track of a website's availability. Users receive an email alert when the site goes down.</p>
-
-## ✨ Features
-
-- Email alerts when the site goes down
-- Admins can add more members to the team
-- JWT authentication
-- Slack integration (in progress)
-- Users can mark incidents as resolved.
+Coming Soon Features :
+- Form teams on the platform by sending invites to users
+- The whole team is notified for our monitor if an incident occurs
+- Slack integration for notifications to team
+- Manage teams by adding or removing members
 
 
-## 🛠 Built using
+# Step by Step Guide for Installing and running the project
 
-#### Front-end
+Adding the .env file :
+1. To start the backend, you need to create a .env file first
+2. Add the following variables to the .env file
+- [x] PORT = 5000 (port number on which your backend will run, keep it 5000 only)
+- [x] MONGO_URI (the connection string from your mongo db atlas)
+- [x] BASE_URL = http://localhost:5000 (will be different after deployment)
+- [x] JWT_SECRET (a large random string for signing JWTs)
+- [x] JWT_REFRESH_SECRET (a large random string for refreshing JWTs)
+- [x] GMAIL_USER (the email id from which you want to send emails)
+- [x] GMAIL_PASSWORD (app password of email id (not the original password))
 
-- [ReactJS](https://reactjs.org/) - Frontend framework
-- [Redux Toolkit w/ useDispatch & useSelector hooks](https://redux.js.org/) - For state management
-- [React Router](https://reactrouter.com/) - For general routing & navigation
-- [Axios](https://axios-http.com/) - For data fetching
+Installing the dependencies for backend (not to be done when using docker setup) :
+> cd backend
+> npm install
 
-#### Back-end
+Installing the dependencies for frontend (not to be done when using docker setup) :
+> cd frontend
+> npm install
 
-- [Node.js](https://nodejs.org/en/) - Runtime environment for JS
-- [Express.js](https://expressjs.com/) - Node.js framework, makes process of building APIs easier & faster
-- [MongoDB](https://www.mongodb.com/) - Database to store document-based data
-- [Mongoose](https://mongoosejs.com/) - MongoDB object modeling for Node.js
-- [AWS Lambda](https://aws.amazon.com/s3/) - To make HTTP requests to the websites that's being monitored
-- [JSON Web Token](https://jwt.io/) - A standard to secure/authenticate HTTP requests
-- [Bcrypt.js](https://www.npmjs.com/package/bcryptjs) - For hashing passwords
-- [Dotenv](https://www.npmjs.com/package/dotenv) - To load environment variables from a .env file
+Commands to run Frontend :
+> cd frotnend
+> npm run dev
 
+Note : Before running the frontend, go to frontend/src/util and update the getBaseURL() function. Add this url http://localhost:5000 (do this if you want to test it locally on your device)
 
-## 🗺 Roadmap
+Commands to run Backend :
+> cd backend
+> npm start
 
-- [x] Create Monitors
-    - [x] To test availability
-    - [ ] SSL expiration
-    - [ ] Keyword availability
-    - [ ] Perfomance monitoring
-    - [ ] Core web vital reports
-- [x] Manage team members
-    - [x] Invite members
-    - [x] Remove members
-    - [ ] Assign members to monitors
-- [x] Create a scheduled Lambda function which makes an HTTP request to the website being monitored every 60 minutes. 
-- [x] Ability to send invites by the admin 
-- [x] Notify all assigned members as soon as an incident occurs through email 
-- [ ] Slack integration
-- [ ] Profile page
-- [ ] Page Speed Reports
-- [ ] Assign team members to incidents
-- [ ] Charts to display overall uptime of a website
+For running via Docker, run the command in main project directory (make sure the Docker Desktop is installed and Docker Engine is running) :
+> docker-compose up --build
 
-
-<p align="center">(<a href="#readme-top">back to top</a>)</p>
-
+Then go to the http://localhost:5173 on your browser and enjoy!

@@ -5,7 +5,6 @@ const Token = require("../models/tokenModel");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const asyncHandler = require("express-async-handler");
-const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
 const generateTokens = require("../utils/generateTokens");
 
@@ -17,6 +16,7 @@ const jwtRefreshSecret = process.env.JWT_REFRESH_SECRET;
 //@access Public
 const register = asyncHandler(async (req, res) => {
   const { email, password, firstName, lastName } = req.body;
+  console.log(email, password, firstName, lastName);
 
   //Input validations
   if (!email || !password) {
@@ -55,15 +55,6 @@ const register = asyncHandler(async (req, res) => {
     userId: userDetails._id,
     token: verificationLinkToken,
   }).save();
-
-  const verificationURL = `${process.env.BASE_URL}/user/verify/${userDetails._id}/${verificationLinkToken}`;
-
-  //Sending email verification email
-  sendEmail(
-    email,
-    { verificationURL },
-    process.env.SENDGRID_EMAIL_VERIFICATION_TEMPLATE
-  );
 
   //Generating the token
   const token = jwt.sign(

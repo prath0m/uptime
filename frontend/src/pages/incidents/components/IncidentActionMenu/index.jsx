@@ -11,7 +11,6 @@ import {
 import {
   AiOutlineEye,
   AiOutlineDelete,
-  AiOutlineFileSearch,
   AiOutlineIssuesClose,
 } from "react-icons/ai";
 
@@ -37,9 +36,6 @@ const IncidentActionMenu = ({ incidentId, acknowledged, resolved }) => {
           <AiOutlineEye size="15px" /> Acknowledge
         </div>
       )}
-      <div className={styles.menuItem}>
-        <AiOutlineFileSearch size="15px" /> View
-      </div>
       <div
         className={styles.menuItem}
         onClick={() => dispatch(deleteIncident(incidentId))}

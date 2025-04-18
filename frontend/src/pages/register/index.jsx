@@ -6,19 +6,20 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { reset, registerUser } from "@/features/auth/authSlice";
 import { toast } from "react-toastify";
-import bannerImage from "@/assets/images/homepageImage.png";
+import bannerImage from "@/assets/images/homepage.png";
 
 const Register = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [singUpDetails, setSignUpDetails] = useState({
-    email: "chathurapereraaa@gmail.com",
-    password: "chathura123456",
-    confirmedPassword: "chathura123456",
-    firstName: "chathuraaa",
-    lastName: "perera",
+  const [signUpDetails, setSignUpDetails] = useState({
+    email: "",
+    password: "",
+    confirmedPassword: "",
+    firstName: "",
+    lastName: "",
   });
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmedPassword, setShowConfirmedPassword] = useState(false);
 
@@ -30,11 +31,9 @@ const Register = () => {
     if (isError) {
       toast.error(message);
     }
-
     if (isSuccess || user) {
       navigate("/");
     }
-
     dispatch(reset());
   }, [user, isError, isSuccess, message, navigate, dispatch]);
 
@@ -52,10 +51,10 @@ const Register = () => {
   //handle form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (singUpDetails.password !== singUpDetails.confirmedPassword) {
+    if (signUpDetails.password !== signUpDetails.confirmedPassword) {
       return toast.error("Passwords do not match!");
     }
-    const { confirmedPassword, ...userData } = singUpDetails;
+    const { confirmedPassword, ...userData } = signUpDetails;
 
     await dispatch(registerUser(userData));
     isSuccess && navigate("/email-verification");
@@ -77,7 +76,7 @@ const Register = () => {
                   name="firstName"
                   required
                   placeholder="john"
-                  value={singUpDetails.firstName}
+                  value={signUpDetails.firstName}
                 />
               </div>
               <div className={styles.inputControl}>
@@ -87,7 +86,7 @@ const Register = () => {
                   onChange={handleChange}
                   name="lastName"
                   required
-                  value={singUpDetails.lastName}
+                  value={signUpDetails.lastName}
                   placeholder="doe"
                 />
               </div>
@@ -99,7 +98,7 @@ const Register = () => {
                 type="text"
                 required
                 name="email"
-                value={singUpDetails.email}
+                value={signUpDetails.email}
                 onChange={handleChange}
                 placeholder="name@gmail.com"
               />
@@ -110,7 +109,7 @@ const Register = () => {
                 onChange={handleChange}
                 autoComplete="off"
                 type={showPassword ? "text" : "password"}
-                value={singUpDetails.password}
+                value={signUpDetails.password}
                 required
                 placeholder="password"
                 name="password"
@@ -132,7 +131,7 @@ const Register = () => {
                 onChange={handleChange}
                 type={showConfirmedPassword ? "text" : "password"}
                 required
-                value={singUpDetails.confirmedPassword}
+                value={signUpDetails.confirmedPassword}
                 placeholder="password"
                 name="confirmedPassword"
               />
@@ -150,13 +149,6 @@ const Register = () => {
               </div>
             </div>
 
-            <label
-              htmlFor="agreementCheckbox"
-              className={styles.agreementCheckbox}
-            >
-              <input type="checkbox" name="" id="agreementCheckbox" />I agree
-              with <b>Terms and Privacy</b>
-            </label>
             <button className={styles.loginButton}>
               {isLoading ? <Spinner /> : "Sign up"}
             </button>

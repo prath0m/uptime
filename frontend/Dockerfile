@@ -1,13 +1,21 @@
-FROM node:18.12.1
+# Use Node.js base image
+FROM node:18
 
+# Set working directory to /app
 WORKDIR /app
 
-COPY package.json .
+# Copy package.json and package-lock.json (if exists)
+COPY package*.json ./
 
+# Install dependencies
 RUN npm install
 
+# Copy the rest of your frontend code
 COPY . .
 
-EXPOSE 3000
+# Expose the port your frontend runs on
+EXPOSE 5173
 
-CMD ["npm","start"]
+# Command to run your client side
+CMD ["npm", "run", "dev", "--", "--host"]
+
